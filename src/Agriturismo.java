@@ -21,8 +21,8 @@ public class Agriturismo {
         this.postiTenda = postiTenda;
         this.postiRoulotte = postiRoulotte;
         this.recapiti = recapiti;
-        this.pernottamento = pernottamento;
-        this.camping = camping;
+        this.pernottamento = false;
+        this.camping = false;
     }
 
     public String getComuneAzienda() {
@@ -126,7 +126,7 @@ public class Agriturismo {
                 ", postiRoulotte=" + postiRoulotte +
                 ", recapiti='" + recapiti + '\'' +
                 ", pernottamento=" + pernottamento +
-                ", camping=" + camping + "\n" +
-                '}';
+                ", camping=" + camping +
+                "}\n";
     }
 }

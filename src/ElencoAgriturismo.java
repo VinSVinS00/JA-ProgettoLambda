@@ -2,6 +2,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Scanner;
 
@@ -45,6 +46,10 @@ public class ElencoAgriturismo
         }
     }
 
+    public void ordina(OrdinaAgriturismo oa) {
+        agriturismi.sort(oa.ordina());
+    }
+
 
     public static ElencoAgriturismo
     carica(String filename) {
@@ -72,9 +77,22 @@ public class ElencoAgriturismo
                 if("".equals(postiRoulotte)) postiRoulotte = "0";
 
                 String recapiti = s.next();
+                boolean pernottamento, camping;
 
-                ea.aggiungi(new Agriturismo(comuneAzienda, titolare, denominazioneAzienda, indirizzoAzienda, Integer.parseInt(postiLetto), Integer.parseInt(postiMacchina), Integer.parseInt(postiTenda), Integer.parseInt(postiRoulotte), recapiti,false,false
-                ));
+                if(Integer.parseInt(postiLetto) > 0){
+                    pernottamento = true;
+                }else{
+                    pernottamento = false;
+                }
+
+                if(Integer.parseInt(postiRoulotte) > 0 || Integer.parseInt(postiTenda) > 0){
+                    camping = true;
+                }else{
+                    camping = false;
+                }
+
+                ea.aggiungi(new Agriturismo(comuneAzienda, titolare, denominazioneAzienda, indirizzoAzienda, Integer.parseInt(postiLetto), Integer.parseInt(postiMacchina),
+                        Integer.parseInt(postiTenda), Integer.parseInt(postiRoulotte), recapiti, pernottamento, camping));
             }
         } catch (IOException ex) {
             System.err.println(ex);
@@ -87,6 +105,6 @@ public class ElencoAgriturismo
         return "ElencoAgriturismo" +
                 "{" +
                 "agriturismi=" + agriturismi +
-                '}';
+                "}\n";
     }
 }
