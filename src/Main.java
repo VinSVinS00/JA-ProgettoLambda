@@ -17,6 +17,10 @@ public class Main {
         e2.ordina(() -> (a1, a2) -> a1.getDenominazioneAzienda().compareTo(a2.getDenominazioneAzienda()));
         System.out.println("LISTA DEGLI AGRITURISMI DI AGEROLA ORDINATA IN BASE ALLA DENOMINAZIONE DELL'AZIENDA: \n" + e2 + "\n");
 
+        ElencoAgriturismo e4 = e1.filtra(a -> a.getPostiRoulotte()>0).filtra(a -> a.getPostiTenda() > 0);
+        System.out.println("AGRITURISMI ADIBITI AL CAMPING: \n" + e4 + "\n");
 
+        ElencoAgriturismo e5 = e2.filtra(a -> a.getPostiLetto()>0);
+        System.out.println("AGRITURISMI DI AGEROLA ADIBITI AL PERNOTTAMENTO: \n" + e5 + "\n");
     }
 }

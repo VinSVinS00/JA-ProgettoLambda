@@ -85,7 +85,7 @@ public class ElencoAgriturismo
                     pernottamento = false;
                 }
 
-                if(Integer.parseInt(postiRoulotte) > 0 || Integer.parseInt(postiTenda) > 0){
+                if(Integer.parseInt(postiRoulotte) > 0 && Integer.parseInt(postiTenda) > 0){
                     camping = true;
                 }else{
                     camping = false;
