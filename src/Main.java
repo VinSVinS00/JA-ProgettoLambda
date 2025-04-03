@@ -1,9 +1,17 @@
-public class Main {
-    public static void main(String[] args) {
-        ElencoAgriturismo test = new ElencoAgriturismo();
-        ElencoAgriturismo ea1 = test.carica("Agriturismi-Napoli.csv");
+import java.io.IOException;
 
-        ElencoAgriturismo ea2 = ea1.filtra(a -> a.getPostiLetto() > 12);
-        System.out.println(ea2);
+public class Main {
+    public static void main(String[] args) throws IOException {
+        ElencoAgriturismo e = new ElencoAgriturismo();
+        ElencoAgriturismo e1 = e.carica("Agriturismi-Napoli.csv");
+
+        ElencoAgriturismo e2 = e1.filtra(a -> a.getComuneAzienda().equalsIgnoreCase("agerola"));
+        System.out.println(e2 + "\n");
+
+        ElencoAgriturismo e3 = e1.filtra(a->a.getPostiMacchina() <20).filtra(a-> a.getPostiMacchina()>0);
+        e3.aggiorna(a-> a.setPostiMacchina(40));
+        System.out.println("AGGIORNAMENTO:\nNUMERO POSTI MACCHINA CAMBIATI -> \n" + e3 + "\n");
+
+
     }
 }

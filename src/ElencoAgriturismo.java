@@ -1,79 +1,92 @@
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
-public class ElencoAgriturismo {
-    private List<Agriturismo> lista;
+public class ElencoAgriturismo
+{
+    private List<Agriturismo> agriturismi;
 
-    public ElencoAgriturismo(){
-        this.lista = new ArrayList<>();
+    public ElencoAgriturismo
+            (){
+        agriturismi = new ArrayList<>();
     }
 
     public void aggiungi(Agriturismo a){
-        lista.add(a);
+        agriturismi.add(a);
     }
 
-    public ElencoAgriturismo filtra(FiltroPostiLetto fpl){
-        ElencoAgriturismo elencoTemp = new ElencoAgriturismo();
-        for(Agriturismo a : this.lista){
-            if(fpl.verifica(a)){
-                elencoTemp.aggiungi(a);
+    public ElencoAgriturismo
+    filtra(FiltroAgriturismo fa){
+        ElencoAgriturismo
+                ea = new ElencoAgriturismo
+                ();
+        for(Agriturismo a : agriturismi){
+            if(fa.verifica(a)){
+                ea.aggiungi(a);
             }
         }
-        return elencoTemp;
+        return ea;
     }
 
-    public ElencoAgriturismo carica(String filename){
-        try{
-            BufferedReader reader = new BufferedReader(new FileReader(filename));
-            ElencoAgriturismo ea = new ElencoAgriturismo();
-            String line;
-            while((line = reader.readLine()) != null){
-                Scanner s = new Scanner(line);
-                s.useDelimiter(";");
+    public <T> List<T> estrai(EstraiAgriturismo<T> ea){
+        List<T> lista = new ArrayList<>();
+        for(Agriturismo a : agriturismi){
+            lista.add(ea.estrai(a));
+        }
+        return lista;
+    }
 
-                String comuneAziendale = s.next();
-                String titolare= s.next();
-                String denominazioneAzienda= s.next();
-                String indirizzoAzienda= s.next();
-
-                int postiLetto= s.nextInt();
-                String checkPostiLetto = String.valueOf(postiLetto);
-                if(checkPostiLetto.isBlank())
-                    postiLetto = 0;
-                int postiMacchina= s.nextInt();
-                String checkPostiMacchina = String.valueOf(postiMacchina);
-                if(checkPostiMacchina.isBlank())
-                    postiMacchina = 0;
-                int postiTenda= s.nextInt();
-                String checkPostiTenda = String.valueOf(postiTenda);
-                if(checkPostiTenda.isBlank())
-                    postiTenda = 0;
-                int postiRoulette= s.nextInt();
-                String checkPostiRoulette = String.valueOf(postiRoulette);
-                if(checkPostiRoulette.isBlank())
-                    postiRoulette = 0;
-                String recapito= s.next();
-
-                ea.aggiungi(new Agriturismo(comuneAziendale, titolare, denominazioneAzienda, indirizzoAzienda, postiLetto, postiMacchina, postiTenda, postiRoulette, recapito, false, false));
-
-            }
-            return ea;
-        } catch (IOException e) {
-            throw new RuntimeException(e);
+    public void aggiorna(AggiornaAgriturismo aa){
+        for(Agriturismo a : agriturismi){
+            aa.aggiorna(a);
         }
     }
 
 
+    public static ElencoAgriturismo
+    carica(String filename) {
+        ElencoAgriturismo
+                ea = new ElencoAgriturismo
+                ();
+        try(Scanner s = new Scanner(new BufferedReader(new FileReader(filename)))){
+            s.useDelimiter(";|\n");
+            s.nextLine();
+            while(s.hasNext()){
+                String comuneAzienda = s.next();
+                String titolare = s.next();
+                String denominazioneAzienda = s.next();
+                String indirizzoAzienda = s.next();
+                String postiLetto = s.next();
+                if("".equals(postiLetto)) postiLetto = "0";
+
+                String postiMacchina = s.next();
+                if("".equals(postiMacchina)) postiMacchina = "0";
+
+                String postiTenda = s.next();
+                if("".equals(postiTenda)) postiTenda = "0";
+
+                String postiRoulotte = s.next();
+                if("".equals(postiRoulotte)) postiRoulotte = "0";
+
+                String recapiti = s.next();
+
+                ea.aggiungi(new Agriturismo(comuneAzienda, titolare, denominazioneAzienda, indirizzoAzienda, Integer.parseInt(postiLetto), Integer.parseInt(postiMacchina), Integer.parseInt(postiTenda), Integer.parseInt(postiRoulotte), recapiti,false,false
+                ));
+            }
+        } catch (IOException ex) {
+            System.err.println(ex);
+        }
+        return ea;
+    }
 
     @Override
     public String toString() {
-        return "ElencoAgriturismo{" +
-                "lista=" + lista +
+        return "ElencoAgriturismo" +
+                "{" +
+                "agriturismi=" + agriturismi +
                 '}';
     }
 }

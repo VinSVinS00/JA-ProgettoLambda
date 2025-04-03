@@ -1,3 +1,3 @@
-public interface FiltroPostiLetto {
+public interface FiltroAgriturismo {
     boolean verifica(Agriturismo a);
 }

@@ -1,36 +1,36 @@
 public class Agriturismo {
-    private String comuneAziendale;
+    private String comuneAzienda;
     private String titolare;
     private String denominazioneAzienda;
     private String indirizzoAzienda;
     private int postiLetto;
     private int postiMacchina;
     private int postiTenda;
-    private int postiRoulette;
-    private String recapito;
+    private int postiRoulotte;
+    private String recapiti;
     private boolean pernottamento;
     private boolean camping;
 
-    public Agriturismo(String comuneAziendale, String titolare, String denominazioneAzienda, String indirizzoAzienda, int postiLetto, int postiMacchina, int postiTenda, int postiRoulette, String recapito, boolean pernottamento, boolean camping) {
-        this.comuneAziendale = comuneAziendale;
+    public Agriturismo(String comuneAzienda, String titolare, String denominazioneAzienda, String indirizzoAzienda, int postiLetto, int postiMacchina, int postiTenda, int postiRoulotte, String recapiti, boolean pernottamento, boolean camping) {
+        this.comuneAzienda = comuneAzienda;
         this.titolare = titolare;
         this.denominazioneAzienda = denominazioneAzienda;
         this.indirizzoAzienda = indirizzoAzienda;
         this.postiLetto = postiLetto;
         this.postiMacchina = postiMacchina;
         this.postiTenda = postiTenda;
-        this.postiRoulette = postiRoulette;
-        this.recapito = recapito;
+        this.postiRoulotte = postiRoulotte;
+        this.recapiti = recapiti;
         this.pernottamento = pernottamento;
         this.camping = camping;
     }
 
-    public String getComuneAziendale() {
-        return comuneAziendale;
+    public String getComuneAzienda() {
+        return comuneAzienda;
     }
 
-    public void setComuneAziendale(String comuneAziendale) {
-        this.comuneAziendale = comuneAziendale;
+    public void setComuneAzienda(String comuneAzienda) {
+        this.comuneAzienda = comuneAzienda;
     }
 
     public String getTitolare() {
@@ -81,20 +81,20 @@ public class Agriturismo {
         this.postiTenda = postiTenda;
     }
 
-    public int getPostiRoulette() {
-        return postiRoulette;
+    public int getPostiRoulotte() {
+        return postiRoulotte;
     }
 
-    public void setPostiRoulette(int postiRoulette) {
-        this.postiRoulette = postiRoulette;
+    public void setPostiRoulotte(int postiRoulotte) {
+        this.postiRoulotte = postiRoulotte;
     }
 
-    public String getRecapito() {
-        return recapito;
+    public String getRecapiti() {
+        return recapiti;
     }
 
-    public void setRecapito(String recapito) {
-        this.recapito = recapito;
+    public void setRecapiti(String recapiti) {
+        this.recapiti = recapiti;
     }
 
     public boolean isPernottamento() {
@@ -115,18 +115,18 @@ public class Agriturismo {
 
     @Override
     public String toString() {
-        return "Agriturismo{" +
-                "comuneAziendale='" + comuneAziendale + '\'' +
+        return "progetto.Agriturismo{" +
+                "comuneAzienda='" + comuneAzienda + '\'' +
                 ", titolare='" + titolare + '\'' +
                 ", denominazioneAzienda='" + denominazioneAzienda + '\'' +
                 ", indirizzoAzienda='" + indirizzoAzienda + '\'' +
-                ", postiLetto='" + postiLetto + '\'' +
-                ", postiMacchina='" + postiMacchina + '\'' +
-                ", postiTenda='" + postiTenda + '\'' +
-                ", postiRoulette='" + postiRoulette + '\'' +
-                ", recapito='" + recapito + '\'' +
+                ", postiLetto=" + postiLetto +
+                ", postiMacchina=" + postiMacchina +
+                ", postiTenda=" + postiTenda +
+                ", postiRoulotte=" + postiRoulotte +
+                ", recapiti='" + recapiti + '\'' +
                 ", pernottamento=" + pernottamento +
-                ", camping=" + camping +
-                "}\n";
+                ", camping=" + camping + "\n" +
+                '}';
     }
 }
