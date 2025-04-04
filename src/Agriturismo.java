@@ -115,18 +115,7 @@ public class Agriturismo {
 
     @Override
     public String toString() {
-        return "progetto.Agriturismo{" +
-                "comuneAzienda='" + comuneAzienda + '\'' +
-                ", titolare='" + titolare + '\'' +
-                ", denominazioneAzienda='" + denominazioneAzienda + '\'' +
-                ", indirizzoAzienda='" + indirizzoAzienda + '\'' +
-                ", postiLetto=" + postiLetto +
-                ", postiMacchina=" + postiMacchina +
-                ", postiTenda=" + postiTenda +
-                ", postiRoulotte=" + postiRoulotte +
-                ", recapiti='" + recapiti + '\'' +
-                ", pernottamento=" + pernottamento +
-                ", camping=" + camping +
-                "}\n";
+        return comuneAzienda + ";" + titolare + ";" + denominazioneAzienda + ";" + indirizzoAzienda + ";" + postiLetto + ";" +
+                postiMacchina + ";" + postiTenda + ";" + postiRoulotte + ";" + recapiti + "\n";
     }
 }

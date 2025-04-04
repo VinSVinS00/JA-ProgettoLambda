@@ -22,5 +22,7 @@ public class Main {
 
         ElencoAgriturismo e5 = e2.filtra(a -> a.getPostiLetto()>0);
         System.out.println("AGRITURISMI DI AGEROLA ADIBITI AL PERNOTTAMENTO: \n" + e5 + "\n");
+
+        e1.esporta(a -> a.getComuneAzienda().equalsIgnoreCase("CASTELLAMARE STABIA"), "fileWrite.txt");
     }
 }

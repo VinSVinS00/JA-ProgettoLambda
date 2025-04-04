@@ -1,3 +1,3 @@
-public interface AggiornaAgriturismo{
+public interface AggiornaAgriturismo {
     void aggiorna(Agriturismo a);
 }

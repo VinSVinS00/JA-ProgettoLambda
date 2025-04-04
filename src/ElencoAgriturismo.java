@@ -1,6 +1,4 @@
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
@@ -10,8 +8,7 @@ public class ElencoAgriturismo
 {
     private List<Agriturismo> agriturismi;
 
-    public ElencoAgriturismo
-            (){
+    public ElencoAgriturismo(){
         agriturismi = new ArrayList<>();
     }
 
@@ -19,11 +16,8 @@ public class ElencoAgriturismo
         agriturismi.add(a);
     }
 
-    public ElencoAgriturismo
-    filtra(FiltroAgriturismo fa){
-        ElencoAgriturismo
-                ea = new ElencoAgriturismo
-                ();
+    public ElencoAgriturismo filtra(FiltroAgriturismo fa){
+        ElencoAgriturismo ea = new ElencoAgriturismo();
         for(Agriturismo a : agriturismi){
             if(fa.verifica(a)){
                 ea.aggiungi(a);
@@ -51,11 +45,9 @@ public class ElencoAgriturismo
     }
 
 
-    public static ElencoAgriturismo
-    carica(String filename) {
+    public static ElencoAgriturismo carica(String filename) {
         ElencoAgriturismo
-                ea = new ElencoAgriturismo
-                ();
+                ea = new ElencoAgriturismo();
         try(Scanner s = new Scanner(new BufferedReader(new FileReader(filename)))){
             s.useDelimiter(";|\n");
             s.nextLine();
@@ -98,6 +90,19 @@ public class ElencoAgriturismo
             System.err.println(ex);
         }
         return ea;
+    }
+
+    public void esporta(FiltroAgriturismo fa, String filename){
+        try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter(filename));
+            for(Agriturismo a : agriturismi){
+                if(fa.verifica(a)){
+                    writer.write(a.toString());
+                }
+            }
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
     }
 
     @Override
