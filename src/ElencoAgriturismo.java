@@ -44,6 +44,13 @@ public class ElencoAgriturismo
         agriturismi.sort(oa.ordina());
     }
 
+    public int somma(SommaAgriturismo oa) {
+        int somma = 0;
+        for(Agriturismo a : agriturismi){
+            somma += oa.somma(a);
+        }
+        return somma;
+    }
 
     public static ElencoAgriturismo carica(String filename) {
         ElencoAgriturismo
